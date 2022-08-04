@@ -1,13 +1,16 @@
+import { Link, Navigate, NavLink, Route, useNavigate } from "react-router-dom";
 import { getRandomColor } from "../helpers";
+import { Home } from "./Home";
 
 function Header() {
   const randomColor = getRandomColor();
+  let navigate = useNavigate();
   return (
     <header
       className="header"
       style={{
         // @ts-ignore
-        ["--random-colour"]: `var(--${randomColor})`
+        ["--border-colour"]: randomColor,
       }}
     >
       <div className="header__logo" style={{ color: randomColor }}>
@@ -16,16 +19,13 @@ function Header() {
       <nav className="header__nav">
         <ul>
           <li>
-            {/* Create here a link to this page */}
-            Home
+            <Link to="/products">Home</Link>
           </li>
           <li>
-            {/* Create here a link to this page */}
-            Categories
+            <Link to="/categories">Categories</Link>
           </li>
           <li>
-            {/* Create here a link to this page */}
-            Basket
+            <Link to="/basket">Basket</Link>
           </li>
         </ul>
       </nav>
